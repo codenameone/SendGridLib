@@ -66,6 +66,24 @@ public class SendGrid {
     }
 
     /**
+     * Sends an email synchronously 
+     * @param to to email
+     * @param from from email
+     * @param subject email subject
+     * @param body the body of the email in html format
+     */
+    public void sendHtmlSync(String to, String from, String subject, String body) {
+        Response<String> s = Rest.post("https://api.sendgrid.com/v3/mail/send").
+            jsonContent().
+            header("Authorization", "Bearer "+ token).
+            body("{\"personalizations\": [{\"to\": [{\"email\": \"" + to + 
+                "\"}]}],\"from\": {\"email\": \"" + from + 
+                "\"},\"subject\": \"" + from + 
+                "\",\"content\": [{\"type\": \"text/html\", \"value\": \"" + 
+                body + "\"}]}").getAsString();        
+    }
+
+    /**
      * Sends an email asynchronously 
      * @param to to email
      * @param from from email
@@ -82,4 +100,23 @@ public class SendGrid {
                 "\",\"content\": [{\"type\": \"text/plain\", \"value\": \"" + 
                 body + "\"}]}").getAsStringAsync(new CallbackAdapter<>());
     }
+
+     /**
+     * Sends an email asynchronously 
+     * @param to to email
+     * @param from from email
+     * @param subject email subject
+     * @param body the body of the email in html format
+     */
+    public void sendHtmlASync(String to, String from, String subject, String body) {
+        Rest.post("https://api.sendgrid.com/v3/mail/send").
+            jsonContent().
+            header("Authorization", "Bearer "+ token).
+            body("{\"personalizations\": [{\"to\": [{\"email\": \"" + to + 
+                "\"}]}],\"from\": {\"email\": \"" + from + 
+                "\"},\"subject\": \"" + from + 
+                "\",\"content\": [{\"type\": \"text/html\", \"value\": \"" + 
+                body + "\"}]}").getAsStringAsync(new CallbackAdapter<>());
+    }
+   
 }
