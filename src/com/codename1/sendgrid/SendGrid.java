@@ -60,7 +60,7 @@ public class SendGrid {
             header("Authorization", "Bearer "+ token).
             body("{\"personalizations\": [{\"to\": [{\"email\": \"" + to + 
                 "\"}]}],\"from\": {\"email\": \"" + from + 
-                "\"},\"subject\": \"" + from + 
+                "\"},\"subject\": \"" + subject + 
                 "\",\"content\": [{\"type\": \"text/plain\", \"value\": \"" + 
                 body + "\"}]}").getAsString();        
     }
@@ -78,7 +78,7 @@ public class SendGrid {
             header("Authorization", "Bearer "+ token).
             body("{\"personalizations\": [{\"to\": [{\"email\": \"" + to + 
                 "\"}]}],\"from\": {\"email\": \"" + from + 
-                "\"},\"subject\": \"" + from + 
+                "\"},\"subject\": \"" + subject + 
                 "\",\"content\": [{\"type\": \"text/html\", \"value\": \"" + 
                 body + "\"}]}").getAsString();        
     }
@@ -96,7 +96,7 @@ public class SendGrid {
             header("Authorization", "Bearer "+ token).
             body("{\"personalizations\": [{\"to\": [{\"email\": \"" + to + 
                 "\"}]}],\"from\": {\"email\": \"" + from + 
-                "\"},\"subject\": \"" + from + 
+                "\"},\"subject\": \"" + subject + 
                 "\",\"content\": [{\"type\": \"text/plain\", \"value\": \"" + 
                 body + "\"}]}").getAsStringAsync(new CallbackAdapter<>());
     }
@@ -114,7 +114,7 @@ public class SendGrid {
             header("Authorization", "Bearer "+ token).
             body("{\"personalizations\": [{\"to\": [{\"email\": \"" + to + 
                 "\"}]}],\"from\": {\"email\": \"" + from + 
-                "\"},\"subject\": \"" + from + 
+                "\"},\"subject\": \"" + subject + 
                 "\",\"content\": [{\"type\": \"text/html\", \"value\": \"" + 
                 body + "\"}]}").getAsStringAsync(new CallbackAdapter<>());
     }
